@@ -131,9 +131,9 @@ void setup() {
     gpio_wakeup_enable(GPIO_NUM_42, GPIO_INTR_LOW_LEVEL);
     esp_sleep_enable_gpio_wakeup();
 
-
-        mode=Vmeter.begin(&Wire, M5_UNIT_VMETER_I2C_ADDR, 13, 15, 400000U);
-        delay(100);
+    // Connect the Voltmeter Unit to PORT A（RED)
+    mode=Vmeter.begin(&Wire, M5_UNIT_VMETER_I2C_ADDR, SDA, SCL, 400000U);
+    delay(100);
     
     if(mode){
     Vmeter.setEEPROMAddr(M5_UNIT_VMETER_EEPROM_I2C_ADDR);
